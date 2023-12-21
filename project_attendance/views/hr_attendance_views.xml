@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="hr_attendance_tree_task" model="ir.ui.view">
+    <field name="name">Attendance Tree Project Task</field>
+    <field name="model">hr.attendance</field>
+    <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+    <field name="arch" type="xml">
+      <field name="check_in" position="before">
+        <field name="pa_project_id" />
+        <field name="pa_task_id" />
+        <field name="pa_description" />
+      </field>
+    </field>
+  </record>
+
+  <record id="hr_attendance_form_task" model="ir.ui.view">
+    <field name="name">Attendance Form Project Task</field>
+    <field name="model">hr.attendance</field>
+    <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+    <field name="arch" type="xml">
+      <field name="employee_id" position="after">
+        <field name="pa_project_id" />
+        <field name="pa_task_id" />
+      </field>
+      <xpath expr="//group[1]" position="after">
+        <group>
+          <field name="pa_description" />
+        </group>
+      </xpath>
+    </field>
+  </record>
+</odoo>

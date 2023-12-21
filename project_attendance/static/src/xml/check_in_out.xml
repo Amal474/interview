@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <t t-extend="HrAttendanceMyMainMenu">
+    <t t-jquery="t[t-call='HrAttendanceCheckInOutButtons']" t-operation="before">
+      <label t-if="!checked_in" for="attendance_project">Choose a Project:</label>
+      <select t-if="!checked_in" name="attendance_project" id="attendance_project">
+        <option value="">--Please choose a Project--</option>
+        <t t-foreach="widget.project_ids" t-as="project_id">
+          <option t-att-value="project_id.id"><t t-esc="project_id.name" /></option>
+        </t>
+      </select>
+
+      <label t-if="!checked_in" for="attendance_task">Choose a Task:</label>
+      <select t-if="!checked_in" name="attendance_task" id="attendance_task">
+        <option value="">--Please choose a task--</option>
+        <t t-foreach="widget.task_ids" t-as="task_id">
+          <option t-att-value="task_id.id"><t t-esc="task_id.name" /></option>
+        </t>
+      </select>
+
+      <label t-if="!checked_in" for="attendance_task">Provide short description:</label>
+      <input t-if="!checked_in"
+             type="text"
+             name="description"
+             id="description"
+             placeholder="Description" />
+    </t>
+  </t>
+</odoo>

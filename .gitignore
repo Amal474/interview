@@ -1,0 +1,9 @@
+# dotfiles
+.*
+!.gitignore
+!.github
+!.mailmap
+# compiled python files
+__pycache__/
+
+
