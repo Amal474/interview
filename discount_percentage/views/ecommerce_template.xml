@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <template id="discount_products_price" inherit_id="website_sale.product_price">
+    <xpath expr="//div[@itemprop='offers']" position="replace">
+      <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" t-attf-class="product_price mt-2 mb-3 {{'d-none' if combination_info['prevent_zero_price_sale'] else 'd-inline-block'}}">
+        <h3>
+          <span t-field="product.discounted_price"
+                t-options="{'widget': 'monetary', 'display_currency': product.currency_id}"/>
+          <t t-if="is_view_active('website_sale.tax_indication')" t-call="website_sale.tax_indication"/>
+          <del t-if="product.discount_percentage">
+            <bdi dir="inherit">
+            <span t-field="product.list_price"
+                  t-options="{'widget': 'monetary', 'display_currency': product.currency_id}"/>
+            </bdi>
+          </del>
+        </h3>
+      </div>
+    </xpath>
+  </template>
+</odoo>
